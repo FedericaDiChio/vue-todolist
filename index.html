@@ -12,7 +12,34 @@
 </head>
 <body>
     <div id="root">
-
+        <main class="container w-50 mt-5">
+            <div class="input-group mb-3">
+                <!-- INPUT TO WRITE MORE TASKS -->
+                <input type="text" class="form-control" 
+                placeholder="Nuova attività" 
+                v-model="newItem" 
+                aria-describedby="button-addon2">
+                <!-- BUTTON TO ADD MORE TASKs  -->
+                <button @click="addItem" class="btn btn-outline-secondary" 
+                type="button" id="button-addon2">
+                Aggiungi</button>
+            </div>
+            <!-- MESSAGE LIST IS EMPTY  -->
+            <h5 class=" text-center" v-if="!toDo.length">Non hai più nulla da fare oggi! <i class="far fa-smile-wink"></i></h5>
+            <!-- TO DO LIST  -->
+            <ul class="list-group" v-else=>
+                <li 
+                    v-for="(item, index) in toDo" 
+                    class="list-group-item d-flex justify-content-between">
+                    {{item}}
+                    <button type="button" 
+                    class="btn-close" 
+                    @click="deleteItem(index)"
+                    >
+                    </button>
+                </li>
+            </ul>
+        </main>
     </div>
     <script src="./script.js"></script>
 </body>
