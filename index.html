@@ -18,6 +18,7 @@
                 <input type="text" class="form-control" 
                 placeholder="Nuova attività" 
                 v-model="newItem" 
+                @keyup.enter="addItem"
                 aria-describedby="button-addon2">
                 <!-- BUTTON TO ADD MORE TASKs  -->
                 <button @click="addItem" class="btn btn-outline-secondary" 
