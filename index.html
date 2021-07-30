@@ -1,47 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+        integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Handlee&family=Sacramento&family=Tangerine:wght@700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./style.css">
     <title>To Do List</title>
 </head>
+
 <body>
     <div id="root">
+        <header class="text-center mt-5">
+            <h1 id="title" class="text-white">To Do List <i class="fas fa-pencil-alt"></i></h1>
+        </header>
         <main class="container w-50 mt-5">
-            <div class="input-group mb-3">
+            <div class="input-group" v-if="!toDo.length">
                 <!-- INPUT TO WRITE MORE TASKS -->
-                <input type="text" class="form-control" 
+                <input type="text" 
+                class="form-control" 
                 placeholder="Nuova attività" 
-                v-model="newItem" 
-                @keyup.enter="addItem"
-                aria-describedby="button-addon2">
+                v-model="newItem"
+                @keyup.enter="addItem">
                 <!-- BUTTON TO ADD MORE TASKs  -->
-                <button @click="addItem" class="btn btn-outline-secondary" 
-                type="button" id="button-addon2">
+                <button @click="addItem" 
+                class="btn btn-outline-secondary text-white bg-royalblu" 
+                type="button" id="btn">
                 Aggiungi</button>
             </div>
             <!-- MESSAGE LIST IS EMPTY  -->
-            <h5 class=" text-center" v-if="!toDo.length">Non hai più nulla da fare oggi! <i class="far fa-smile-wink"></i></h5>
+            <h5 class=" text-center mt-3" v-if="!toDo.length">Non hai più nulla da fare oggi! <i
+                    class="far fa-smile-wink"></i></h5>
             <!-- TO DO LIST  -->
             <ul class="list-group" v-else=>
-                <li 
-                    v-for="(item, index) in toDo" 
-                    class="list-group-item d-flex justify-content-between">
+                <li v-for="(item, index) in toDo" 
+                class="list-group-item d-flex justify-content-between">
                     {{item}}
                     <button type="button" 
                     class="btn-close" 
-                    @click="deleteItem(index)"
-                    >
+                    @click="deleteItem(index)">
                     </button>
                 </li>
+                <li class="list-group-item">
+                    <div class="input-group">
+                        <!-- INPUT TO WRITE MORE TASKS -->
+                        <input type="text" 
+                        class="form-control" 
+                        placeholder="Nuova attività" 
+                        v-model="newItem"
+                        @keyup.enter="addItem">
+                        <!-- BUTTON TO ADD MORE TASKs  -->
+                        <button @click="addItem" 
+                        class="btn btn-outline-secondary text-white bg-royalblu" 
+                        type="button" id="btn">
+                        Aggiungi</button>
+                    </div>
+                </li>
             </ul>
+
         </main>
     </div>
     <script src="./script.js"></script>
 </body>
+
 </html>

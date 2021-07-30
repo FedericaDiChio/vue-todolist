@@ -1,4 +1,19 @@
 body {
-    background-color: aquamarine;
+    background-color: skyblue;
+    font-family: 'Handlee', cursive;
+    font-size: 20px;
+}
+
+#title {
+    font-family: 'Sacramento', cursive;
+    font-size: 60px;
+}
+
+#title i {
+    font-size: 30px;
+}
+
+.bg-royalblu {
+    background-color: royalblue;
 }
 
